@@ -1,0 +1,15 @@
+.container {
+  background-image: url("./assets/star.jpg");
+  padding: 3% 10% 3% 10%;
+  min-height: 600px;
+}
+.starship-list {
+  .starship-container {
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
