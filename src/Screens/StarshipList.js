@@ -36,6 +36,10 @@ background-color: #f0f0f0;
     font-size: 24px;
     margin-right: 5px;
   }
+  .starship-image {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 const StarshipList = () => {
@@ -53,9 +57,10 @@ const StarshipList = () => {
                 ));
 
                 setStarships(
-                    filteredStarships.map((starship) => ({
+                    filteredStarships.map((starship, index) => ({
                         ...starship,
                         isMostFilms: starship === mostFilmsStarship,
+                        imageSrc: `assets/images/starship${index + 1}.jpg`,
                     }))
                 );
             })
@@ -71,12 +76,23 @@ const StarshipList = () => {
                     key={starship.name}
                     className={starship.isMostFilms ? 'most-films' : 'normal-film'}
                 >
-                    {starship.isMostFilms && (
-                        <FontAwesomeIcon icon={faStar} className="icon" />
-                    )}
-                    <h2>{starship.name}</h2>
-                    <p>Model: {starship.model}</p>
-                    <p>Number of Films: {starship.films.length}</p>
+                    <div style={{ display: 'flex' }}>
+                        <div style={{ width: "85%" }}>
+                            {starship.isMostFilms && (
+                                <FontAwesomeIcon icon={faStar} className="icon" />
+                            )}
+                            <h2>{starship.name}</h2>
+                            <p>Model: {starship.model}</p>
+                            <p>Number of Films: {starship.films.length}</p>
+                        </div>
+                        <div style={{ width: "15%" }}>
+                            <img
+                                src={starship.imageSrc}
+                                alt={`Image of ${starship.name}`}
+                                className="starship-image"
+                            />
+                        </div>
+                    </div>
                 </StarshipContainer>
             ))}
         </div>
